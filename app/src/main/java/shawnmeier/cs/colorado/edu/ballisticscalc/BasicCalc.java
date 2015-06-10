@@ -1,6 +1,6 @@
 package shawnmeier.cs.colorado.edu.ballisticscalc;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BasicCalc extends ActionBarActivity implements View.OnClickListener {
+public class BasicCalc extends Activity implements View.OnClickListener {
 
     List<View> toUpdate = new ArrayList<View>();
+    String foo = "";
     protected void calculate() {
         EditText range = (EditText) this.findViewById(R.id.distance_input);
         EditText speed = (EditText) this.findViewById(R.id.speed_input);
@@ -69,5 +70,6 @@ public class BasicCalc extends ActionBarActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         calculate();
+        foo = "hello world";
     }
 }
