@@ -27,7 +27,9 @@ public class BasicCalc extends Activity implements View.OnClickListener {
         Update update = new Update(range_v, speed_v);
         for(View v : toUpdate){
             Updater u = (Updater) v.getTag(R.id.updater);
-            u.update(update);
+            if(v instanceof TextView) {
+                ((TextView)v).setText(u.update(update));
+            }
         }
 
 
@@ -37,7 +39,7 @@ public class BasicCalc extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_calc);
         TextView angleLabel = (TextView) this.findViewById(R.id.angle_output);
-        angleLabel.setTag(R.id.updater, new CalculateAngle(angleLabel));
+        angleLabel.setTag(R.id.updater, new CalculateAngle());
 
         Button calculate = (Button) this.findViewById(R.id.calculate_button);
         calculate.setOnClickListener(this);

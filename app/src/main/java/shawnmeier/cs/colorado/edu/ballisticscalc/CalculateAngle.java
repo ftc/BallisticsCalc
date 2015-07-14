@@ -10,19 +10,18 @@ import static java.lang.StrictMath.asin;
  */
 public class CalculateAngle implements Updater {
     double g = 9.8;
-    private final TextView v;
-    CalculateAngle(TextView v){
-        this.v = v;
+    CalculateAngle(){
+
     }
     private double calculateAngle(double range, double speed){
         return asin(range * g/ (speed*speed));
     }
-    public void update(Update u){
+    public String update(Update u){
         double out = calculateAngle(u.getRange(), u.getSpeed());
         if(isNaN(out)){
-            v.setText("Bad");
+            return "Bad";
         }else{
-            v.setText((new Double(out)).toString());
+            return (new Double(out)).toString();
         }
     }
 }
